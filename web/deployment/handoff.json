@@ -1,0 +1,62 @@
+{
+  "chainId": 1,
+  "poolKey": {
+    "fee": 12500,
+    "hooks": "0x784ff9a3ac5d88a30bfff6f7f2a270161fbe6000",
+    "currency0": "0x903b9aab922859e83f16e07cc1f8cdd53edb323e",
+    "currency1": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "tickSpacing": 60
+  },
+  "repoUrl": "https://github.com/identity-md-launches/launch-1438-workflow-contract-stage-context",
+  "version": 1,
+  "launchId": "c2cefa17-c244-4385-ba1d-fbecca79f781",
+  "manifest": {
+    "kind": "evm_project",
+    "pool": {
+      "fee": 12500,
+      "tickSpacing": 60,
+      "initialPrice": "79228162514264337593543950336",
+      "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7"
+    },
+    "notes": "DEAD DROP: every wallet has a dead drop. LaunchToken is DROP (Dead Drop), a fixed-supply ERC-20 with plain transfers and no constructor arguments; the factory mints and splits its supply. DeadDrop is the one application contract. Its constructor takes, in order: owner_ ($owner, the launch owner, Ownable2Step with renounceOwnership disabled, whose only power is setStamp between 0.01 and 1 IMD), drop ($token, the launch token), imd (the paired currency 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7, in which stamps and prices are quoted), poolManager (Uniswap v4 PoolManager 0x000000000004444c5dc75cb358380d2e3de08a90 on Ethereum) and hooks (the IMD launch hook 0x784ff9a3ac5d88a30bfff6f7f2a270161fbe6000, which only gates pool initialization). The constructor makes no external calls; it sorts drop and imd to derive the launch pool key (fee 12500, tick spacing 60, that hook) and checks the pool on first use. Wallets open a drop with an x25519 public key and a price to read; leave pulls stamp plus tip in IMD, swaps all of it to DROP on the launch pool in one exact-input swap, burns the stamp's pro rata share to 0x000000000000000000000000000000000000dEaD and escrows the tip's share until the recipient answers or the sender takes it back after 14 days; knock burns one stamp for a wallet with no drop. DeadDrop holds no launch supply: it only holds DROP escrow from notes left after launch. The pool pairs DROP with IMD; the factory supplies the pool guard, the LP position and the MerkleDistributor.",
+    "token": {
+      "name": "Dead Drop",
+      "symbol": "DROP",
+      "contract": "LaunchToken",
+      "decimals": 18
+    },
+    "contracts": [
+      {
+        "contract": "DeadDrop",
+        "constructorArgs": [
+          "$owner",
+          "$token",
+          "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+          "0x000000000004444c5dc75cb358380d2e3de08a90",
+          "0x784ff9a3ac5d88a30bfff6f7f2a270161fbe6000"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "name": "LaunchToken",
+      "txHash": "0xbec836245bb50814a85182f998a31d62989652c46c94ff1f2012cc229186f891",
+      "abiHash": "66c0725e9072e2c383f59b9a3baa620d857711ec96837623ad2372c434b83f07",
+      "address": "0x903b9aab922859e83f16e07cc1f8cdd53edb323e",
+      "blockNumber": 26177712,
+      "creationCodeHash": "78b0825649c4f589b469923d2bcc23fe6377e7930b8e12232f6046e9cf408e2d"
+    },
+    {
+      "name": "DeadDrop",
+      "txHash": "0xbec836245bb50814a85182f998a31d62989652c46c94ff1f2012cc229186f891",
+      "abiHash": "0aacc1289426a9caf574acaa4e8b08a4c67580a21c4e81ba7dab79ca9fae867c",
+      "address": "0x7abf7bd9e06f960d29e5be89cbc127838b5982ab",
+      "blockNumber": 26177712,
+      "creationCodeHash": "972f849f6f262fb3591c496bc3b621183ba1abe306f26b8db0e3f6ecfb21a91c"
+    }
+  ],
+  "sourceCommit": "44bca84de295601125eff965360c4421abf2aa98",
+  "abiInstructions": "Build ABIs from this exact source commit; compare canonicalKeccak(abi) with abiHash. Verify deployed code on the stated chain before enabling transactions.",
+  "attestationHash": "e8534468356f60588c04b69685fd3388efca2c0527cd1ddbe408424fc19eb012"
+}

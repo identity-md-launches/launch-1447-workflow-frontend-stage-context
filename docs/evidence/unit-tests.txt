@@ -1,0 +1,28 @@
+
+> dead-drop-web@1.0.0 test
+> tsx --test test/*.test.ts
+
+✔ pinned canonical ABI hashes match both implementation exports (37.997899ms)
+✔ signature derivation is deterministic and operates on raw hex bytes (84.333336ms)
+✔ NaCl protocol lets sender and recipient reread, replies reverse direction (38.529899ms)
+✔ enforces sealed UTF-8 boundary and rejects tampering, wrong key and version (12.772411ms)
+✔ amounts reject exponent, negative, excess precision and unsafe slippage (1.230996ms)
+✔ router bytes use attested key, correct direction and five-field tuple (6.530881ms)
+✔ extended router tuple adds minHopPriceX36 before hookData (1.124901ms)
+✔ stale or mismatched quote fails closed (0.547841ms)
+✔ rejects low-order recipient keys before sealing plaintext (5.589156ms)
+✔ decodes actionable errors and wallet rejection (1.176313ms)
+✔ old answered notes use bounded private event queries through the current head (64.334329ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6638.925459
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

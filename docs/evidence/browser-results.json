@@ -1,0 +1,165 @@
+{
+  "started": "2026-10-12T18:03:48.817Z",
+  "manifestSha256": "d242c98a2b90a6c22555e35923c4bce94ae967301a37de40ca4ecbea90395bfa",
+  "checks": [
+    {
+      "name": "production assets load at a static gateway subpath, with all fonts bundled",
+      "status": "passed",
+      "durationMs": 20,
+      "detail": {
+        "resourceCount": 27
+      }
+    },
+    {
+      "name": "responsive reflow at 320, 390, 768 and 1440 CSS pixels",
+      "status": "passed",
+      "durationMs": 486,
+      "detail": {
+        "widths": [
+          320,
+          390,
+          768,
+          1440
+        ]
+      }
+    },
+    {
+      "name": "keyboard skip link focuses main without corrupting the hash route",
+      "status": "passed",
+      "durationMs": 1320
+    },
+    {
+      "name": "reduced motion removes brick transition; control remains operable",
+      "status": "passed",
+      "durationMs": 367
+    },
+    {
+      "name": "home accessibility scan and measured color contrast",
+      "status": "passed",
+      "durationMs": 2413,
+      "detail": {
+        "violations": 0,
+        "contrast": [
+          {
+            "selector": "body",
+            "foreground": "rgb(20, 20, 20)",
+            "background": "rgb(216, 213, 206)",
+            "ratio": 12.57007546060266
+          },
+          {
+            "selector": ".hint",
+            "foreground": "rgb(81, 79, 74)",
+            "background": "rgb(216, 213, 206)",
+            "ratio": 5.5815904705265424
+          },
+          {
+            "selector": ".button.primary",
+            "foreground": "rgb(20, 20, 20)",
+            "background": "rgb(255, 90, 31)",
+            "ratio": 5.907713915810309
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid wallet lookup reports a recoverable error; no transaction",
+      "status": "passed",
+      "durationMs": 202
+    },
+    {
+      "name": "connection rejection recovers and unknown chain offers add then switch",
+      "status": "passed",
+      "durationMs": 1120
+    },
+    {
+      "name": "inbox stays sealed until exact message signature; signing rejection is recoverable",
+      "status": "passed",
+      "durationMs": 1647
+    },
+    {
+      "name": "wallet-scoped history only; reply is encrypted before simulation/signing",
+      "status": "passed",
+      "durationMs": 5873
+    },
+    {
+      "name": "sent view decrypts sender copy, requires confirmation for matured take-back",
+      "status": "passed",
+      "durationMs": 5593
+    },
+    {
+      "name": "set price and owner stamp changes use corresponding contract actions",
+      "status": "passed",
+      "durationMs": 10414
+    },
+    {
+      "name": "note composition has byte limit, quote, exact approval and sealed calldata",
+      "status": "passed",
+      "durationMs": 10712
+    },
+    {
+      "name": "knock for closed recipient quotes and burns a stamp without plaintext",
+      "status": "passed",
+      "durationMs": 5143
+    },
+    {
+      "name": "standalone swap has both Permit2 approvals and exact router encoding",
+      "status": "passed",
+      "durationMs": 15345
+    },
+    {
+      "name": "failed simulation prevents signing; wallet transaction rejection recovers",
+      "status": "passed",
+      "durationMs": 947
+    },
+    {
+      "name": "DROP transfer, allowance revocation and delegated transfer have working controls",
+      "status": "passed",
+      "durationMs": 17049
+    },
+    {
+      "name": "unknown receipt status blocks duplicate transactions and supports confirmation recovery",
+      "status": "passed",
+      "durationMs": 392
+    },
+    {
+      "name": "account change clears inbox secret and private rendered content",
+      "status": "passed",
+      "durationMs": 1167
+    },
+    {
+      "name": "new sender opens a drop through a signature and separate on-chain action",
+      "status": "passed",
+      "durationMs": 5630
+    },
+    {
+      "name": "ownership transfer requires proposal and acceptance by the pending owner",
+      "status": "passed",
+      "durationMs": 10887
+    },
+    {
+      "name": "missing contract code keeps transaction controls disabled",
+      "status": "passed",
+      "durationMs": 327
+    },
+    {
+      "name": "smart contract wallet shows unsupported state and cannot derive inbox key",
+      "status": "passed",
+      "durationMs": 521
+    },
+    {
+      "name": "no injected wallet gives clear installation/browser guidance",
+      "status": "passed",
+      "durationMs": 404
+    },
+    {
+      "name": "no unexpected browser exceptions or console errors in covered flows",
+      "status": "passed",
+      "durationMs": 1,
+      "detail": {
+        "errors": 0
+      }
+    }
+  ],
+  "errors": [],
+  "finished": "2026-10-12T18:05:33.285Z"
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-12",
+  "exportPath": "dist/",
+  "basePath": "/preview/",
+  "source": "Installed browser MCP with real configured public RPC reads; no wallet injected and no transactions broadcast",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "overflow": false,
+  "loadedFonts": [
+    "Archivo Narrow 700",
+    "Archivo Narrow 600",
+    "IBM Plex Mono 400"
+  ],
+  "observedConsoleErrors": 0,
+  "keyboard": {
+    "tabOrder": [
+      "Skip to content",
+      "Dead Drop home",
+      "Connect wallet",
+      "Find a drop",
+      "My inbox",
+      "Swap",
+      "For agents",
+      "Field manual",
+      "Wallet lookup input"
+    ],
+    "lookup": "Typed the actual handoff DeadDrop contract address; Enter reached its closed-drop page, which offered a wallet connection before any knock.",
+    "focusAfterNavigation": "main",
+    "brick": "Focused the loose-brick control, activated with Enter and visually inspected its ink focus outline and revealed envelope."
+  },
+  "screenshots": [
+    "live-desktop.png",
+    "live-mobile.png",
+    "brick-focus-mobile.png",
+    "keyboard-find-mobile.png"
+  ],
+  "notVerified": [
+    "Physical mobile devices",
+    "Screen-reader speech",
+    "Browser-native 200% zoom",
+    "RTL/pseudo-localization",
+    "Real wallet-extension popups",
+    "Real signed transactions"
+  ],
+  "capturedAt": "2026-10-12T18:04:48Z",
+  "manifestSha256": "d242c98a2b90a6c22555e35923c4bce94ae967301a37de40ca4ecbea90395bfa"
+}

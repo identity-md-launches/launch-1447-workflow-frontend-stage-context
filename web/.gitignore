@@ -1,0 +1,11 @@
+# Frontend path budget explicitly permits web/.gitignore.
+# Patterns without a leading slash cover every nesting level in web/.
+node_modules/
+.cache/
+.npm/
+.vite/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+*.tgz

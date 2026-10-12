@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-10-12T17:29:50.537Z",
+  "sourceCommit": "44bca84de295601125eff965360c4421abf2aa98",
+  "readOnly": true,
+  "transactionsBroadcast": 0,
+  "endpoints": [
+    {
+      "rpc": "https://ethereum-rpc.publicnode.com",
+      "chainId": 1,
+      "contracts": [
+        {
+          "name": "LaunchToken",
+          "address": "0x903b9aab922859e83f16e07cc1f8cdd53edb323e",
+          "codeBytes": 1739,
+          "runtimeCodeKeccak": "0x415cf82fe07796dc4c2cceaa5d97142f4529ecbe99fb16e06f34f27f5a36e471"
+        },
+        {
+          "name": "DeadDrop",
+          "address": "0x7abf7bd9e06f960d29e5be89cbc127838b5982ab",
+          "codeBytes": 7893,
+          "runtimeCodeKeccak": "0x928e5b4c244ddfd51e22fcbbd7a575549b2504c34fbcda5f6d279c5ec088a76d"
+        }
+      ],
+      "blockNumber": "26177894",
+      "reads": {
+        "DROP": "0x903b9AAb922859e83F16E07cC1F8cDd53EdB323e",
+        "IMD": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+        "POOL_MANAGER": "0x000000000004444c5dc75cB358380D2e3dE08A90",
+        "poolKey": {
+          "currency0": "0x903b9AAb922859e83F16E07cC1F8cDd53EdB323e",
+          "currency1": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+          "fee": 12500,
+          "tickSpacing": 60,
+          "hooks": "0x784FF9a3ac5d88A30bfff6F7f2a270161FBE6000"
+        },
+        "stamp": "100000000000000000",
+        "noteCount": "0",
+        "answeredCount": "0",
+        "totalImdSpent": "0",
+        "totalDropBurned": "0"
+      },
+      "stampQuote": {
+        "amountIn": "100000000000000000",
+        "amountOut": "39267278577302688308831",
+        "gasEstimate": "87030"
+      },
+      "status": "passed"
+    },
+    {
+      "rpc": "https://eth.drpc.org",
+      "chainId": 1,
+      "contracts": [
+        {
+          "name": "LaunchToken",
+          "address": "0x903b9aab922859e83f16e07cc1f8cdd53edb323e",
+          "codeBytes": 1739,
+          "runtimeCodeKeccak": "0x415cf82fe07796dc4c2cceaa5d97142f4529ecbe99fb16e06f34f27f5a36e471"
+        },
+        {
+          "name": "DeadDrop",
+          "address": "0x7abf7bd9e06f960d29e5be89cbc127838b5982ab",
+          "codeBytes": 7893,
+          "runtimeCodeKeccak": "0x928e5b4c244ddfd51e22fcbbd7a575549b2504c34fbcda5f6d279c5ec088a76d"
+        }
+      ],
+      "blockNumber": "26177894",
+      "reads": {
+        "DROP": "0x903b9AAb922859e83F16E07cC1F8cDd53EdB323e",
+        "IMD": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+        "POOL_MANAGER": "0x000000000004444c5dc75cB358380D2e3dE08A90",
+        "poolKey": {
+          "currency0": "0x903b9AAb922859e83F16E07cC1F8cDd53EdB323e",
+          "currency1": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+          "fee": 12500,
+          "tickSpacing": 60,
+          "hooks": "0x784FF9a3ac5d88A30bfff6F7f2a270161FBE6000"
+        },
+        "stamp": "100000000000000000",
+        "noteCount": "0",
+        "answeredCount": "0",
+        "totalImdSpent": "0",
+        "totalDropBurned": "0"
+      },
+      "stampQuote": {
+        "amountIn": "100000000000000000",
+        "amountOut": "39267278577302688308831",
+        "gasEstimate": "87030"
+      },
+      "status": "passed"
+    }
+  ]
+}

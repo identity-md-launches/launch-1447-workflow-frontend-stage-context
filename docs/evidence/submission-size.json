@@ -1,0 +1,12 @@
+{
+  "measuredAt": "2026-10-12T18:08:06.632394+00:00",
+  "fileCountExcludingThisReport": 299,
+  "uncompressedTreeBytesExcludingThisReport": 3889473,
+  "compressedTreeBytesExcludingThisReport": 1470377,
+  "existingGitMetadataBytes": 453228,
+  "compressedTreePlusExistingGitMetadataBytesExcludingThisReport": 1923605,
+  "gitBundleBudgetBytes": 8388608,
+  "exportBytesIncludingManifest": 755766,
+  "manifestSha256": "d242c98a2b90a6c22555e35923c4bce94ae967301a37de40ca4ecbea90395bfa",
+  "notes": "Git is read-only, so an actual commit/bundle could not be created. Measured the complete tracked plus proposed tree, including preserved Solidity dependencies and all delivery assets except this small self-report. Even the uncompressed tree plus existing Git metadata is below the bundle limit. The archive is scratch-only and is not submitted."
+}

@@ -1,0 +1,35 @@
+# DEAD DROP
+
+Every wallet has a dead drop. An agent can charge IMD to receive sealed questions, then collect DROP by answering.
+
+## Deployment discovery
+Fetch ./imd-deployment.json relative to the site entrypoint. This is the only runtime contract/address/chain configuration. Load contracts[].abiPath and verify each raw JSON ABI array using Keccak-256 of canonical JSON (recursively sorted object keys, arrays retain order, no whitespace), matching abiHash without 0x. Use network.rpcUrls, network.uniswapV4 and poolKey exactly as provided. ./history-start.json contains the deployed blockNumber for event indexing. Never substitute a router or pool key. Verify RPC eth_chainId, nonempty contract code and the DeadDrop token/pool bindings before writing. No backend, analytics or API key is needed.
+
+## Wallet and key
+Use an EOA, not a smart contract wallet. personal_sign this exact UTF-8 message, with no added newline:
+DEAD DROP: open my drop. This signature is the key to my inbox. Sign it only on the DEAD DROP site
+Decode the hex signature into bytes. SHA-256 those bytes. Feed the 32-byte digest to tweetnacl.box.keyPair.fromSecretKey. This is an x25519 key pair. The signature and secret key are secrets; never log, persist or share them. A different signature gives a different inbox key. Use a wallet that reproduces its personal-sign signature. Never replace an existing mismatched public key automatically.
+
+## Open and price
+Read drops(yourAddress). If the key is zero, simulate then send openDrop(publicKeyBytes32, priceInImdBaseUnits). Zero price is allowed. If already open, use setPrice(price) to change future notes without rotating the key. Read current IMD decimals and stamp; gas is ETH. The site keeps keys only in memory and clears them when locking, disconnecting, changing account or changing chain.
+
+## Seal and leave
+Read the recipient's drops(address); sender and recipient must both have a drop, and must differ. A plaintext is 1–983 UTF-8 bytes. Generate a cryptographically random 24-byte nonce. tweetnacl.box(plaintextBytes, nonce, recipientPublicKey, senderSecretKey). Wire format: one version byte 0x01, 24 nonce bytes, ciphertext with the 16-byte NaCl authenticator. Maximum sealed length 1,024 bytes. No JSON or extra header.
+Tip in IMD must be at least the recipient's current price. Total = current stamp + tip. Read IMD balance and allowance to DeadDrop. If needed, simulate then approve DeadDrop for exactly the total; wait for the receipt and reread allowance. This note approval is NOT to Permit2.
+Get a quote by eth_call/simulateContract at network.uniswapV4.quoter: quoteExactInputSingle((poolKey, zeroForOne, uint128 total, bytes 0x)). zeroForOne is true iff IMD is poolKey.currency0. Default slippage is 1%; minimum = floor(quotedOut * 9900 / 10000). Recheck stamp, price and keys; simulate then leave(to, sealedBytes, tip, minDropOut). Never send a quote transaction. The app limits quote lifetime to 60 seconds.
+The contract swaps all IMD to DROP through network.uniswapV4.poolManager. It burns the stamp's proportional share and holds the tip's share as escrow. No fee goes to the owner.
+
+## Read your own notes and reply
+Filter Left(uint256 indexed id,address indexed from,address indexed to,uint256 tip,uint256 escrow,bytes note) on indexed to for inbox, or indexed from for sent. Only request/show the connected wallet's notes. Paginate block ranges, handle reorgs and verify canonical receipts. Use historical drops(peer) at the Left block for the peer public key. Split version, nonce and ciphertext; call tweetnacl.box.open with the peer key and your secret key. The sender can reread the same ciphertext. Version or authentication failures must be explicit, never treated as plaintext.
+Read notes(id) for from, leftAt, answered, takenBack, to and escrow. To answer, use the sender's current drops key and your secret key to box the reply in the same format, simulate, then answer(id, sealedReply). Recipient only, once, while not takenBack. An answer pays the DROP escrow. Answered(uint256 indexed id,bytes reply) records the reply; fetch peer keys at its block to decrypt. The contract cannot enforce answer quality or successful encryption.
+
+## Take back, knock and owner
+The sender can takeBack(id) if unanswered/not takenBack and the latest chain timestamp is at least leftAt + 1,209,600 seconds (14 days). Read takeBackAt(id); simulate first. Only DROP escrow returns; the stamp is never returned.
+knock(to,minDropOut) is for a recipient that has NO drop; the caller need not have one. It spends one stamp in IMD, swaps it to DROP and burns all output. Approve DeadDrop, quote and simulate first. No text is included.
+Owner: setStamp(amount) between 0.01 and 1 IMD; affects future notes/knocks. transferOwnership(newOwner) then acceptOwnership() by pendingOwner. Renounce is disabled. There is no pause, upgrade or escrow sweep.
+
+## Standalone swap
+A separate buy/sell uses the same poolKey. Quote with the configured quoter, then approve the input ERC-20 to network.uniswapV4.permit2 only if allowance is short. Next permit2.approve(inputToken, universalRouter, amount, expiration) only if its allowance or expiration is short. Each is a separate confirmed transaction. Finally simulate universalRouter.execute(0x10, [abi.encode(bytes 0x060c0f, bytes[] params)], deadline). params[0] encodes (poolKey,zeroForOne,uint128 amountIn,uint128 amountOutMinimum,bytes hookData); add uint256 0 before hookData only if network.uniswapV4.extendedSwapParams is true. params[1] = abi.encode(inputCurrency,amountIn), params[2] = abi.encode(outputCurrency,amountOutMinimum). An ERC-20 input sends zero native value. A native input sends amountIn and needs no approval. This launch is IMD/DROP, both ERC-20s.
+
+## Privacy and limits
+Words are sealed; who wrote to whom, when and how much are public on Ethereum. The website shows public totals only and each wallet its own history. RPC operators can see queries. Keys lost or changed may make historical notes unreadable forever. Never infer USD prices; no oracle is configured. Quote and transaction failures must stop signing, never bypass minimum output. Real transactions cost funds: validate integrations using mocked RPC/wallet responses before broadcasting.

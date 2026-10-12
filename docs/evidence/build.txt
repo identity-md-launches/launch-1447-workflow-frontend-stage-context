@@ -1,0 +1,33 @@
+
+> dead-drop-web@1.0.0 build
+> node scripts/export.mjs prepare && vite build && node scripts/export.mjs finalize
+
+Verified pinned LaunchToken: 66c0725e9072e2c383f59b9a3baa620d857711ec96837623ad2372c434b83f07
+Verified pinned DeadDrop: 0aacc1289426a9caf574acaa4e8b08a4c67580a21c4e81ba7dab79ca9fae867c
+vite v7.2.2 building client environment for production...
+transforming...
+node_modules/ox/_esm/core/Base64.js (6:27): A comment
+
+"/*#__PURE__*/"
+
+in "node_modules/ox/_esm/core/Base64.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 1207 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/index.html                                               1.00 kB │ gzip:   0.51 kB
+../dist/assets/archivo-narrow-latin-700-normal-DtADLsoy.woff2   11.78 kB
+../dist/assets/archivo-narrow-latin-600-normal-l2jiltzb.woff2   12.10 kB
+../dist/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff     13.14 kB
+../dist/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2    14.71 kB
+../dist/assets/archivo-narrow-latin-700-normal-DxmyBkwC.woff    15.20 kB
+../dist/assets/archivo-narrow-latin-600-normal-DZkbuzR9.woff    15.54 kB
+../dist/assets/index-I_dfewVW.css                               15.12 kB │ gzip:   3.97 kB
+../dist/assets/ccip-Yu_aQ-MI.js                                  2.61 kB │ gzip:   1.23 kB
+../dist/assets/index-2Qx2ocdJ.js                               589.56 kB │ gzip: 199.55 kB
+✓ built in 17.30s
+Verified manifest: 16 assets, 750993 bytes; exact contract, pool, network and ABI binding.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

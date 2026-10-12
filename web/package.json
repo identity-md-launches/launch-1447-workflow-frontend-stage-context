@@ -1,0 +1,39 @@
+{
+  "name": "dead-drop-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/export.mjs prepare && vite build && node scripts/export.mjs finalize",
+    "preview": "vite preview --host 0.0.0.0",
+    "verify": "node scripts/export.mjs verify",
+    "test": "tsx --test test/*.test.ts",
+    "test:browser": "tsx test/browser.ts",
+    "check:chain": "tsx scripts/check-chain.ts"
+  },
+  "dependencies": {
+    "@fontsource/archivo-narrow": "5.2.7",
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tweetnacl": "1.0.3",
+    "viem": "2.38.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "1.56.1",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.1.0",
+    "prettier": "3.6.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vite": "7.2.2"
+  },
+  "overrides": {
+    "playwright-core": "1.56.1"
+  }
+}
